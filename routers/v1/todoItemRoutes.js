@@ -19,9 +19,18 @@ router.get('/', async function(req, res, next) {
  * Create TodoItem
  */
 router.post('/', async function(req, res, next) {
-  req.checkBody('title', 'Title can not be empty').notEmpty();
+  req.checkBody('title', 'Title is required field').notEmpty();
+  req.checkBody('title', 'Title must be a string').isString();
 
-  let errors = req.validationErrors();
+  if (req.body.position) {
+    req.checkBody('position', 'Position must be a number').isNumeric();
+  }
+
+  if (req.body.completed) {
+    req.checkBody('completed', 'Completed must be a boolean').isBoolean();
+  }
+
+  const errors = req.validationErrors();
 
   if (errors) {
     return next(new ValidationError(errors));
@@ -40,7 +49,18 @@ router.post('/', async function(req, res, next) {
  */
 router.put('/:id', async function(req, res, next) {
   req.checkParams('id', 'Id must be numeric').isNumeric();
-  req.checkBody('title', 'Title can not be empty').notEmpty();
+
+  if (req.body.title) {
+    req.checkBody('title', 'Title must be a string').isString();
+  }
+
+  if (req.body.position) {
+    req.checkBody('position', 'Position must be a number').isNumeric();
+  }
+
+  if (req.body.completed) {
+    req.checkBody('completed', 'Completed must be a boolean').isBoolean();
+  }
 
   let errors = req.validationErrors();
 

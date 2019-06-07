@@ -1,11 +1,11 @@
-class ItemNotFoundError extends Error {
+class ValidationError extends Error {
   constructor(errors) {
-    const message = 'Item is not found';
+    const message = 'Fields validation error';
     super(message);
-    this.status = 404;
+    this.status = 422;
     this.message = message;
     this.errors = errors;
   }
 }
 
-module.exports = ItemNotFoundError;
+module.exports = ValidationError;

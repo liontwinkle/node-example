@@ -14,7 +14,7 @@ class TodoItemService {
     return await TodoItem.findAll({
       order: [
         ['completed', 'asc'],
-        ['createdAt', 'desc'],
+        ['updatedAt', 'desc'],
       ],
     });
   }
