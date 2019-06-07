@@ -10,8 +10,13 @@ class TodoItemService {
     return todoItem;
   }
 
-  async getTodoItems() {
+  async getTodoItems({ completed } = {}) {
+    const where = {};
+    if (typeof completed === 'boolean') {
+      where.completed = completed;
+    }
     return await TodoItem.findAll({
+      where,
       order: [
         ['completed', 'asc'],
         ['updatedAt', 'desc'],
