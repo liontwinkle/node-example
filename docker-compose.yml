@@ -1,0 +1,24 @@
+version: '3.7'
+services:
+  nodejs-sample:
+    container_name: nodejs-sample
+    build: ./
+    ports:
+      - 3000:3000
+    environment:
+      POSTGRES_HOST: nodejs-sample-postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: nodejs-sample
+  nodejs-sample-postgres:
+    image: postgres
+    container_name: nodejs-sample-postgres
+    ports:
+    - 5432:5432
+    volumes:
+    - ./tmp/postgresql/data:/var/lib/postgresql/data
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: nodejs-sample

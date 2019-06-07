@@ -1,0 +1,10 @@
+# IDE-specific
+.idea
+.vscode
+
+# dotenv environment variables file
+.env*
+
+node_modules
+
+tmp
