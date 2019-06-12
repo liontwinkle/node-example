@@ -11,3 +11,8 @@ $ npm start
 ```bash
 $ docker-compose up -d
 ```
+
+### To run tests:
+```bash
+$ npm run test
+```

@@ -15,5 +15,3 @@ client.connect();
 client.query(`CREATE DATABASE ${POSTGRES_DB}`, () => {
     client.end();
 });
-
-

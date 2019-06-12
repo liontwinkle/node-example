@@ -1,0 +1,138 @@
+{
+	"info": {
+		"_postman_id": "5a825346-a2b5-4193-9c3e-da325d9db981",
+		"name": "node-example",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "todo",
+			"item": []
+		},
+		{
+			"name": "Get TodoItems",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/todo-items?completed=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"todo-items"
+					],
+					"query": [
+						{
+							"key": "completed",
+							"value": "true"
+						}
+					]
+				},
+				"description": "Query:\n  completed: true // boolean\n  \nResponse:\n [\n  {\n    \"id\": 1,\n    \"title\": \"Todo#1\",\n    \"completed\": true,\n    \"position\": 1,\n    \"createdAt\": \"2019-06-11T14:10:48.575Z\",\n    \"updatedAt\": \"2019-06-11T14:10:48.578Z\"\n   }\n ]"
+			},
+			"response": []
+		},
+		{
+			"name": "Create TodoItem",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"Todo#1\",\n\t\"position\": 1,\n\t\"completed\": true\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/todo-items",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"todo-items"
+					]
+				},
+				"description": "Body:\n  title: 'TodoTitle' // mandatory, string\n  position: 1 // numeric\n  completed: true // boolean\n  \nResponse:\n  {\n    \"createdAt\": \"2019-06-11T14:10:48.575Z\",\n    \"updatedAt\": \"2019-06-11T14:10:48.578Z\",\n    \"id\": 1,\n    \"title\": \"TodoTitle\",\n    \"position\": 1,\n    \"completed\": true\n   }"
+			},
+			"response": []
+		},
+		{
+			"name": "Update TodoItem",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"Todo#2\",\n\t\"position\": 2,\n\t\"completed\": false\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/todo-items/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"todo-items",
+						"1"
+					]
+				},
+				"description": "Params:\n id: numeric\n\nBody:\n  title: 'TodoTitle2' // string\n  position: 2 // numeric\n  completed: false // boolean\n  \nResponse:\n  {\n    \"createdAt\": \"2019-06-11T14:10:48.575Z\",\n    \"updatedAt\": \"2019-06-11T14:10:48.578Z\",\n    \"id\": 1,\n    \"title\": \"TodoTitle\",\n    \"position\": 1,\n    \"completed\": true\n  }"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete TodoItem",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/todo-items/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"todo-items",
+						"1"
+					]
+				},
+				"description": "Params:\n id: numeric\n  \nResponse:\n  OK"
+			},
+			"response": []
+		}
+	]
+}
